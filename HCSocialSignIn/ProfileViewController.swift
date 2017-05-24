@@ -1,18 +1,19 @@
 //
-//  ViewController.swift
+//  ProfileViewController.swift
 //  HCSocialSignIn
 //
-//  Created by HAO WANG on 5/23/17.
+//  Created by HAO WANG on 5/24/17.
 //  Copyright © 2017 Hacknocraft. All rights reserved.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
+class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -20,6 +21,4 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
 }
-

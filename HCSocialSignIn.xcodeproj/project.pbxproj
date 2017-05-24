@@ -7,13 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1900C003A00922D4D85606AC /* Pods_HCSocialSignInTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95D284AA207766AE5562B9AE /* Pods_HCSocialSignInTests.framework */; };
+		6BB5D19BE534A96987BFBA0A /* Pods_HCSocialSignInUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A53BB8BF9B1C25B7BCE0ECB /* Pods_HCSocialSignInUITests.framework */; };
 		AF56E8891ED53AD300776B51 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF56E8881ED53AD300776B51 /* AppDelegate.swift */; };
-		AF56E88B1ED53AD300776B51 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF56E88A1ED53AD300776B51 /* ViewController.swift */; };
+		AF56E88B1ED53AD300776B51 /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF56E88A1ED53AD300776B51 /* LandingViewController.swift */; };
 		AF56E88E1ED53AD300776B51 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF56E88C1ED53AD300776B51 /* Main.storyboard */; };
 		AF56E8901ED53AD300776B51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF56E88F1ED53AD300776B51 /* Assets.xcassets */; };
 		AF56E8931ED53AD300776B51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF56E8911ED53AD300776B51 /* LaunchScreen.storyboard */; };
 		AF56E89E1ED53AD300776B51 /* HCSocialSignInTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF56E89D1ED53AD300776B51 /* HCSocialSignInTests.swift */; };
 		AF56E8A91ED53AD300776B51 /* HCSocialSignInUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF56E8A81ED53AD300776B51 /* HCSocialSignInUITests.swift */; };
+		AF56E8B81ED55D4900776B51 /* HCAppDelegateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF56E8B71ED55D4900776B51 /* HCAppDelegateExtension.swift */; };
+		AF56E8BA1ED601D000776B51 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF56E8B91ED601D000776B51 /* ProfileViewController.swift */; };
+		AF56E8E31ED6259900776B51 /* HCFacebookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF56E8E21ED6259900776B51 /* HCFacebookManager.swift */; };
+		D60B151F0B9180026962F6EE /* Pods_HCSocialSignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F8034187F2115BB5FC9A660 /* Pods_HCSocialSignIn.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,9 +40,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1A53BB8BF9B1C25B7BCE0ECB /* Pods_HCSocialSignInUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HCSocialSignInUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F8034187F2115BB5FC9A660 /* Pods_HCSocialSignIn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HCSocialSignIn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F4319A3BD2DE83EF6EF115B /* Pods-HCSocialSignIn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HCSocialSignIn.release.xcconfig"; path = "Pods/Target Support Files/Pods-HCSocialSignIn/Pods-HCSocialSignIn.release.xcconfig"; sourceTree = "<group>"; };
+		7174541415ED3EC4C0F71DAB /* Pods-HCSocialSignInTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HCSocialSignInTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HCSocialSignInTests/Pods-HCSocialSignInTests.release.xcconfig"; sourceTree = "<group>"; };
+		8B1080189BB9CCD49E597309 /* Pods-HCSocialSignInUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HCSocialSignInUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HCSocialSignInUITests/Pods-HCSocialSignInUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		95D284AA207766AE5562B9AE /* Pods_HCSocialSignInTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HCSocialSignInTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7C8CAFD13C6BE1D666ACA99 /* Pods-HCSocialSignInUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HCSocialSignInUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HCSocialSignInUITests/Pods-HCSocialSignInUITests.release.xcconfig"; sourceTree = "<group>"; };
 		AF56E8851ED53AD300776B51 /* HCSocialSignIn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HCSocialSignIn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF56E8881ED53AD300776B51 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AF56E88A1ED53AD300776B51 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AF56E88A1ED53AD300776B51 /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
 		AF56E88D1ED53AD300776B51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AF56E88F1ED53AD300776B51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AF56E8921ED53AD300776B51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +60,11 @@
 		AF56E8A41ED53AD300776B51 /* HCSocialSignInUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HCSocialSignInUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF56E8A81ED53AD300776B51 /* HCSocialSignInUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCSocialSignInUITests.swift; sourceTree = "<group>"; };
 		AF56E8AA1ED53AD300776B51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AF56E8B71ED55D4900776B51 /* HCAppDelegateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCAppDelegateExtension.swift; sourceTree = "<group>"; };
+		AF56E8B91ED601D000776B51 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		AF56E8E21ED6259900776B51 /* HCFacebookManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCFacebookManager.swift; sourceTree = "<group>"; };
+		B406E58B9E30D596A95FD063 /* Pods-HCSocialSignInTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HCSocialSignInTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HCSocialSignInTests/Pods-HCSocialSignInTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D27C9F5524C8B6AB495B2A9C /* Pods-HCSocialSignIn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HCSocialSignIn.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HCSocialSignIn/Pods-HCSocialSignIn.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D60B151F0B9180026962F6EE /* Pods_HCSocialSignIn.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1900C003A00922D4D85606AC /* Pods_HCSocialSignInTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,12 +88,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BB5D19BE534A96987BFBA0A /* Pods_HCSocialSignInUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		23A41E01609E8731A577F3DD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D27C9F5524C8B6AB495B2A9C /* Pods-HCSocialSignIn.debug.xcconfig */,
+				6F4319A3BD2DE83EF6EF115B /* Pods-HCSocialSignIn.release.xcconfig */,
+				B406E58B9E30D596A95FD063 /* Pods-HCSocialSignInTests.debug.xcconfig */,
+				7174541415ED3EC4C0F71DAB /* Pods-HCSocialSignInTests.release.xcconfig */,
+				8B1080189BB9CCD49E597309 /* Pods-HCSocialSignInUITests.debug.xcconfig */,
+				A7C8CAFD13C6BE1D666ACA99 /* Pods-HCSocialSignInUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		46C1C688F5CDC3C066CB5D05 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1F8034187F2115BB5FC9A660 /* Pods_HCSocialSignIn.framework */,
+				95D284AA207766AE5562B9AE /* Pods_HCSocialSignInTests.framework */,
+				1A53BB8BF9B1C25B7BCE0ECB /* Pods_HCSocialSignInUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		AF56E87C1ED53AD300776B51 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +125,8 @@
 				AF56E89C1ED53AD300776B51 /* HCSocialSignInTests */,
 				AF56E8A71ED53AD300776B51 /* HCSocialSignInUITests */,
 				AF56E8861ED53AD300776B51 /* Products */,
+				23A41E01609E8731A577F3DD /* Pods */,
+				46C1C688F5CDC3C066CB5D05 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,8 +143,10 @@
 		AF56E8871ED53AD300776B51 /* HCSocialSignIn */ = {
 			isa = PBXGroup;
 			children = (
+				AF56E8B61ED543BB00776B51 /* Source */,
 				AF56E8881ED53AD300776B51 /* AppDelegate.swift */,
-				AF56E88A1ED53AD300776B51 /* ViewController.swift */,
+				AF56E88A1ED53AD300776B51 /* LandingViewController.swift */,
+				AF56E8B91ED601D000776B51 /* ProfileViewController.swift */,
 				AF56E88C1ED53AD300776B51 /* Main.storyboard */,
 				AF56E88F1ED53AD300776B51 /* Assets.xcassets */,
 				AF56E8911ED53AD300776B51 /* LaunchScreen.storyboard */,
@@ -125,6 +173,15 @@
 			path = HCSocialSignInUITests;
 			sourceTree = "<group>";
 		};
+		AF56E8B61ED543BB00776B51 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				AF56E8B71ED55D4900776B51 /* HCAppDelegateExtension.swift */,
+				AF56E8E21ED6259900776B51 /* HCFacebookManager.swift */,
+			);
+			path = Source;
+			sourceTree = SOURCE_ROOT;
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +189,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AF56E8AD1ED53AD300776B51 /* Build configuration list for PBXNativeTarget "HCSocialSignIn" */;
 			buildPhases = (
+				EBC56DE143F6A23E8605851A /* [CP] Check Pods Manifest.lock */,
 				AF56E8811ED53AD300776B51 /* Sources */,
 				AF56E8821ED53AD300776B51 /* Frameworks */,
 				AF56E8831ED53AD300776B51 /* Resources */,
+				EB2754F78958554DCB0ED4AF /* [CP] Embed Pods Frameworks */,
+				FF17AFB69387D597D613EB71 /* [CP] Copy Pods Resources */,
+				AF56E8E41ED62D4500776B51 /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -149,9 +210,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AF56E8B01ED53AD300776B51 /* Build configuration list for PBXNativeTarget "HCSocialSignInTests" */;
 			buildPhases = (
+				4073C7D03A202B36A75676A9 /* [CP] Check Pods Manifest.lock */,
 				AF56E8951ED53AD300776B51 /* Sources */,
 				AF56E8961ED53AD300776B51 /* Frameworks */,
 				AF56E8971ED53AD300776B51 /* Resources */,
+				FD0AED34E108DA2EF25D0A86 /* [CP] Embed Pods Frameworks */,
+				ADF1AF54E6A493F48530D0C3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -167,9 +231,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AF56E8B31ED53AD300776B51 /* Build configuration list for PBXNativeTarget "HCSocialSignInUITests" */;
 			buildPhases = (
+				E42C1D25A4ED6DE945F3E12A /* [CP] Check Pods Manifest.lock */,
 				AF56E8A01ED53AD300776B51 /* Sources */,
 				AF56E8A11ED53AD300776B51 /* Frameworks */,
 				AF56E8A21ED53AD300776B51 /* Resources */,
+				C352AFB6724F13B476C16A78 /* [CP] Embed Pods Frameworks */,
+				B54683D42F9B867B8EA30CD9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -257,12 +324,167 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4073C7D03A202B36A75676A9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		ADF1AF54E6A493F48530D0C3 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HCSocialSignInTests/Pods-HCSocialSignInTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AF56E8E41ED62D4500776B51 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "";
+		};
+		B54683D42F9B867B8EA30CD9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HCSocialSignInUITests/Pods-HCSocialSignInUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C352AFB6724F13B476C16A78 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HCSocialSignInUITests/Pods-HCSocialSignInUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E42C1D25A4ED6DE945F3E12A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		EB2754F78958554DCB0ED4AF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HCSocialSignIn/Pods-HCSocialSignIn-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EBC56DE143F6A23E8605851A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FD0AED34E108DA2EF25D0A86 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HCSocialSignInTests/Pods-HCSocialSignInTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FF17AFB69387D597D613EB71 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HCSocialSignIn/Pods-HCSocialSignIn-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		AF56E8811ED53AD300776B51 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF56E88B1ED53AD300776B51 /* ViewController.swift in Sources */,
+				AF56E8E31ED6259900776B51 /* HCFacebookManager.swift in Sources */,
+				AF56E88B1ED53AD300776B51 /* LandingViewController.swift in Sources */,
+				AF56E8B81ED55D4900776B51 /* HCAppDelegateExtension.swift in Sources */,
+				AF56E8BA1ED601D000776B51 /* ProfileViewController.swift in Sources */,
 				AF56E8891ED53AD300776B51 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -413,6 +635,7 @@
 		};
 		AF56E8AE1ED53AD300776B51 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D27C9F5524C8B6AB495B2A9C /* Pods-HCSocialSignIn.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 9S24R7N9D3;
@@ -426,6 +649,7 @@
 		};
 		AF56E8AF1ED53AD300776B51 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6F4319A3BD2DE83EF6EF115B /* Pods-HCSocialSignIn.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 9S24R7N9D3;
@@ -439,6 +663,7 @@
 		};
 		AF56E8B11ED53AD300776B51 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B406E58B9E30D596A95FD063 /* Pods-HCSocialSignInTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -454,6 +679,7 @@
 		};
 		AF56E8B21ED53AD300776B51 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7174541415ED3EC4C0F71DAB /* Pods-HCSocialSignInTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -469,6 +695,7 @@
 		};
 		AF56E8B41ED53AD300776B51 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8B1080189BB9CCD49E597309 /* Pods-HCSocialSignInUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 9S24R7N9D3;
@@ -483,6 +710,7 @@
 		};
 		AF56E8B51ED53AD300776B51 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A7C8CAFD13C6BE1D666ACA99 /* Pods-HCSocialSignInUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 9S24R7N9D3;
@@ -514,6 +742,7 @@
 				AF56E8AF1ED53AD300776B51 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AF56E8B01ED53AD300776B51 /* Build configuration list for PBXNativeTarget "HCSocialSignInTests" */ = {
 			isa = XCConfigurationList;
@@ -522,6 +751,7 @@
 				AF56E8B21ED53AD300776B51 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AF56E8B31ED53AD300776B51 /* Build configuration list for PBXNativeTarget "HCSocialSignInUITests" */ = {
 			isa = XCConfigurationList;
@@ -530,6 +760,7 @@
 				AF56E8B51ED53AD300776B51 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
