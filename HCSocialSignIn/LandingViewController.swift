@@ -57,7 +57,8 @@ class LandingViewController: UIViewController {
     func handleFacebookLoginSuccess() {
         HUD.show(.progress)
         HCFacebookManager.sharedInstance
-            .fetchCurrentProfileInfo(parameters: ["fields": "id, name, first_name, last_name, email, picture.type(large)"]) { (info, error) in
+            .fetchCurrentProfileInfo(parameters:
+            ["fields": "id, name, first_name, last_name, email, picture.type(large)"]) { (info, _) in
 
                 HUD.hide()
                 if let picture = info?["picture"] as? [String: AnyObject],
@@ -90,4 +91,3 @@ class LandingViewController: UIViewController {
         }
     }
 }
-

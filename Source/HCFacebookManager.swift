@@ -14,7 +14,7 @@ open class HCFacebookManager: NSObject {
 
     open static let sharedInstance = HCFacebookManager()
 
-    static let defaultProfileParams = ["fields": "id, name, first_name, last_name, email, picture.type(large)"];
+    static let defaultProfileParams = ["fields": "id, name, first_name, last_name, email, picture.type(large)"]
 
     /// login via Facebook
     ///
