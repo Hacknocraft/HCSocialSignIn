@@ -13,6 +13,10 @@ target 'HCSocialSignIn' do
   # HUD
   pod 'PKHUD', '~> 4.0'
 
+  # Network
+  pod 'Alamofire'
+  pod 'AlamofireImage'
+
   target 'HCSocialSignInTests' do
     inherit! :search_paths
     # Pods for testing

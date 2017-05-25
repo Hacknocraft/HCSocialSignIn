@@ -16,6 +16,11 @@ class LandingViewController: UIViewController {
     @IBOutlet weak var linkedInButton: UIButton!
     @IBOutlet weak var twitterButton: UIButton!
 
+    var userID: String?
+    var avatarURL: String?
+    var username: String?
+    var userEmail: String?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -48,18 +53,41 @@ class LandingViewController: UIViewController {
     }
 
     // MARK: - Profile fetching
+
     func handleFacebookLoginSuccess() {
         HUD.show(.progress)
         HCFacebookManager.sharedInstance
             .fetchCurrentProfileInfo(parameters: ["fields": "id, name, first_name, last_name, email, picture.type(large)"]) { (info, error) in
 
                 HUD.hide()
-                self.performSegue(withIdentifier: "AuthenticationFinishSegue", sender: self.facebookButton)
+                if let picture = info?["picture"] as? [String: AnyObject],
+                    let data = picture["data"] as? [String: AnyObject],
+                    let url = data["url"] as? String {
+
+                    self.avatarURL = url
+                }
+                self.userEmail = info?["email"] as? String
+                self.username = info?["name"] as? String
+                self.userID = info?["id"] as? String
+                self.goToProfile()
         }
     }
 
+    // MARK: - Navigate
+
+    func goToProfile() {
+
+        self.performSegue(withIdentifier: "AuthenticationFinishSegue", sender: self.facebookButton)
+    }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        NSLog("prepare")
+        if segue.identifier == "AuthenticationFinishSegue" {
+            if let destinationVC = segue.destination as? ProfileViewController {
+                destinationVC.username = self.username
+                destinationVC.userEmail = self.userEmail
+                destinationVC.avatarURL = self.avatarURL
+            }
+        }
     }
 }
 
