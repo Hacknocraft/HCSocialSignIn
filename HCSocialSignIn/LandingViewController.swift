@@ -47,6 +47,22 @@ class LandingViewController: UIViewController {
     }
 
     @IBAction func linkedInLoginTapped(_ sender: Any) {
+
+        let linkedInKey = "81zmve1omyn2cn"
+        let linkedInSecret = "ErrcmDNQXkwJtQd4"
+        let redirectUrl = "http://hacknocraft.com/"
+        let scope = ["r_basicprofile", "r_emailaddress"]
+
+        HCLinkedInManager.sharedInstance.login(viewController: self,
+                                               key: linkedInKey,
+                                               secret: linkedInSecret,
+                                               redirectUrl: redirectUrl,
+                                               scope: scope) { (success, _) in
+
+                                                if success {
+                                                    self.handleLinkedInLoginSuccess()
+                                                }
+        }
     }
 
     @IBAction func twitterLoginTapped(_ sender: Any) {
@@ -70,6 +86,28 @@ class LandingViewController: UIViewController {
                 self.userEmail = info?["email"] as? String
                 self.username = info?["name"] as? String
                 self.userID = info?["id"] as? String
+                self.goToProfile()
+        }
+    }
+
+    func handleLinkedInLoginSuccess() {
+        HUD.show(.progress)
+
+        let fields = ["id", "email-address", "first-name", "last-name", "public-profile-url"]
+        HCLinkedInManager
+            .sharedInstance
+            .fetchCurrentProfileInfo(parameters: fields) { (info, _) in
+
+                HUD.hide()
+
+                let firstName = info?["firstName"] as? String
+                let lastName = info?["lastName"] as? String
+                self.username = "\(String(describing: firstName)) \(String(describing: lastName))"
+
+                self.userEmail = info?["emailAdress"] as? String
+                self.userID = info?["id"] as? String
+                self.avatarURL = info?["publicProfileUrl"] as? String
+
                 self.goToProfile()
         }
     }

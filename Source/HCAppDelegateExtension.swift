@@ -13,12 +13,20 @@ extension AppDelegate {
 
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
 
-        let handled = FBSDKApplicationDelegate.sharedInstance().application(application,
+        let fbHandled = FBSDKApplicationDelegate.sharedInstance().application(application,
                                                                             open: url,
                                                                             sourceApplication: sourceApplication,
                                                                             annotation: annotation)
 
-        return handled
+        if LISDKCallbackHandler.shouldHandle(url) {
+            let liHandled = LISDKCallbackHandler.application(application,
+                                                             open: url,
+                                                             sourceApplication: sourceApplication,
+                                                             annotation: annotation)
+            return liHandled && fbHandled
+        }
+
+        return fbHandled
     }
 
 }

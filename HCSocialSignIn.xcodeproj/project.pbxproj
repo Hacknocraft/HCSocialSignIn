@@ -20,6 +20,10 @@
 		AF56E8BA1ED601D000776B51 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF56E8B91ED601D000776B51 /* ProfileViewController.swift */; };
 		AF56E8E31ED6259900776B51 /* HCFacebookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF56E8E21ED6259900776B51 /* HCFacebookManager.swift */; };
 		D60B151F0B9180026962F6EE /* Pods_HCSocialSignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F8034187F2115BB5FC9A660 /* Pods_HCSocialSignIn.framework */; };
+		FD036DC31EE54DB8001EE965 /* LinkedInWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD036DC11EE54DB8001EE965 /* LinkedInWebViewController.swift */; };
+		FD036DC41EE54DB8001EE965 /* LinkedInWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD036DC21EE54DB8001EE965 /* LinkedInWebViewController.xib */; };
+		FD8C940F1EE12894004C2C3D /* HCLinkedInManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8C940E1EE12894004C2C3D /* HCLinkedInManager.swift */; };
+		FD8C94131EE12FC9004C2C3D /* linkedin-sdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD8C94121EE12FC9004C2C3D /* linkedin-sdk.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +69,12 @@
 		AF56E8E21ED6259900776B51 /* HCFacebookManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCFacebookManager.swift; sourceTree = "<group>"; };
 		B406E58B9E30D596A95FD063 /* Pods-HCSocialSignInTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HCSocialSignInTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HCSocialSignInTests/Pods-HCSocialSignInTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D27C9F5524C8B6AB495B2A9C /* Pods-HCSocialSignIn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HCSocialSignIn.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HCSocialSignIn/Pods-HCSocialSignIn.debug.xcconfig"; sourceTree = "<group>"; };
+		FD036DC11EE54DB8001EE965 /* LinkedInWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkedInWebViewController.swift; sourceTree = "<group>"; };
+		FD036DC21EE54DB8001EE965 /* LinkedInWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LinkedInWebViewController.xib; sourceTree = "<group>"; };
+		FD8C940E1EE12894004C2C3D /* HCLinkedInManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCLinkedInManager.swift; sourceTree = "<group>"; };
+		FD8C94101EE12C96004C2C3D /* linkedin-sdk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "linkedin-sdk.framework"; path = "../../../li-ios-sdk-1.0.7-release 2/linkedin-sdk.framework"; sourceTree = "<group>"; };
+		FD8C94121EE12FC9004C2C3D /* linkedin-sdk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = "linkedin-sdk.framework"; sourceTree = "<group>"; };
+		FD8C94421EE1365B004C2C3D /* HCSocialSignIn-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HCSocialSignIn-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +83,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D60B151F0B9180026962F6EE /* Pods_HCSocialSignIn.framework in Frameworks */,
+				FD8C94131EE12FC9004C2C3D /* linkedin-sdk.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,6 +122,7 @@
 		46C1C688F5CDC3C066CB5D05 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FD8C94101EE12C96004C2C3D /* linkedin-sdk.framework */,
 				1F8034187F2115BB5FC9A660 /* Pods_HCSocialSignIn.framework */,
 				95D284AA207766AE5562B9AE /* Pods_HCSocialSignInTests.framework */,
 				1A53BB8BF9B1C25B7BCE0ECB /* Pods_HCSocialSignInUITests.framework */,
@@ -151,6 +163,7 @@
 				AF56E88F1ED53AD300776B51 /* Assets.xcassets */,
 				AF56E8911ED53AD300776B51 /* LaunchScreen.storyboard */,
 				AF56E8941ED53AD300776B51 /* Info.plist */,
+				FD8C94421EE1365B004C2C3D /* HCSocialSignIn-Bridging-Header.h */,
 			);
 			path = HCSocialSignIn;
 			sourceTree = "<group>";
@@ -176,11 +189,23 @@
 		AF56E8B61ED543BB00776B51 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				FD036DC01EE54D95001EE965 /* LinkedIn */,
 				AF56E8B71ED55D4900776B51 /* HCAppDelegateExtension.swift */,
 				AF56E8E21ED6259900776B51 /* HCFacebookManager.swift */,
 			);
 			path = Source;
 			sourceTree = SOURCE_ROOT;
+		};
+		FD036DC01EE54D95001EE965 /* LinkedIn */ = {
+			isa = PBXGroup;
+			children = (
+				FD8C94121EE12FC9004C2C3D /* linkedin-sdk.framework */,
+				FD8C940E1EE12894004C2C3D /* HCLinkedInManager.swift */,
+				FD036DC11EE54DB8001EE965 /* LinkedInWebViewController.swift */,
+				FD036DC21EE54DB8001EE965 /* LinkedInWebViewController.xib */,
+			);
+			name = LinkedIn;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -303,6 +328,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF56E8931ED53AD300776B51 /* LaunchScreen.storyboard in Resources */,
+				FD036DC41EE54DB8001EE965 /* LinkedInWebViewController.xib in Resources */,
 				AF56E8901ED53AD300776B51 /* Assets.xcassets in Resources */,
 				AF56E88E1ED53AD300776B51 /* Main.storyboard in Resources */,
 			);
@@ -337,7 +363,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		ADF1AF54E6A493F48530D0C3 /* [CP] Copy Pods Resources */ = {
@@ -411,7 +437,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		EB2754F78958554DCB0ED4AF /* [CP] Embed Pods Frameworks */ = {
@@ -441,7 +467,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		FD0AED34E108DA2EF25D0A86 /* [CP] Embed Pods Frameworks */ = {
@@ -481,7 +507,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD8C940F1EE12894004C2C3D /* HCLinkedInManager.swift in Sources */,
 				AF56E8E31ED6259900776B51 /* HCFacebookManager.swift in Sources */,
+				FD036DC31EE54DB8001EE965 /* LinkedInWebViewController.swift in Sources */,
 				AF56E88B1ED53AD300776B51 /* LandingViewController.swift in Sources */,
 				AF56E8B81ED55D4900776B51 /* HCAppDelegateExtension.swift in Sources */,
 				AF56E8BA1ED601D000776B51 /* ProfileViewController.swift in Sources */,
@@ -639,10 +667,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 9S24R7N9D3;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Source",
+				);
 				INFOPLIST_FILE = HCSocialSignIn/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hacknocraft.HCSocialSignIn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/zengwenzhi/Desktop/Work/Project/HCSocialSignIn/HCSocialSignIn/HCSocialSignIn-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -653,10 +686,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 9S24R7N9D3;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Source",
+				);
 				INFOPLIST_FILE = HCSocialSignIn/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hacknocraft.HCSocialSignIn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/zengwenzhi/Desktop/Work/Project/HCSocialSignIn/HCSocialSignIn/HCSocialSignIn-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
