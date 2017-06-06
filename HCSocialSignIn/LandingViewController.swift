@@ -74,19 +74,24 @@ class LandingViewController: UIViewController {
         HUD.show(.progress)
         HCFacebookManager.sharedInstance
             .fetchCurrentProfileInfo(parameters:
-            ["fields": "id, name, first_name, last_name, email, picture.type(large)"]) { (info, _) in
+            ["fields": "id, name, first_name, last_name, email, picture.type(large)"]) { (info, error) in
 
                 HUD.hide()
-                if let picture = info?["picture"] as? [String: AnyObject],
-                    let data = picture["data"] as? [String: AnyObject],
-                    let url = data["url"] as? String {
+                if error == nil {
+                    if let picture = info?["picture"] as? [String: AnyObject],
+                        let data = picture["data"] as? [String: AnyObject],
+                        let url = data["url"] as? String {
 
-                    self.avatarURL = url
+                        self.avatarURL = url
+                    }
+                    self.userEmail = info?["email"] as? String
+                    self.username = info?["name"] as? String
+                    self.userID = info?["id"] as? String
+                    self.goToProfile()
+                } else {
+                    HUD.flash(.labeledError(title: "Request failed",
+                                            subtitle: "Cannot fetch user profile from Facebook"))
                 }
-                self.userEmail = info?["email"] as? String
-                self.username = info?["name"] as? String
-                self.userID = info?["id"] as? String
-                self.goToProfile()
         }
     }
 
