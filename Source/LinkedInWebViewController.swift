@@ -153,7 +153,14 @@ class LinkedInWebViewController: UIViewController, UIWebViewDelegate {
                 requestForAccessToken(code)
             }
             return false
-        } else if url.absoluteString.contains("cancel") { // user cancel authorization
+        }
+        // this logic is flawed, the initial URL contains the word "cancel"
+//        else if url.absoluteString.contains("cancel") { // user cancel authorization
+//            completionHandler?(false, LoginError.cancelError)
+//            self.dismissVC()
+//            return false
+            //        }
+        else if url.path.contains("login-cancel") { // user cancel authorization
             completionHandler?(false, LoginError.cancelError)
             self.dismissVC()
             return false

@@ -14,16 +14,16 @@ extension AppDelegate {
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
 
         let fbHandled = FBSDKApplicationDelegate.sharedInstance().application(application,
-                                                                            open: url,
-                                                                            sourceApplication: sourceApplication,
-                                                                            annotation: annotation)
+                                                                              open: url,
+                                                                              sourceApplication: sourceApplication,
+                                                                              annotation: annotation)
 
         if LISDKCallbackHandler.shouldHandle(url) {
             let liHandled = LISDKCallbackHandler.application(application,
                                                              open: url,
                                                              sourceApplication: sourceApplication,
                                                              annotation: annotation)
-            return liHandled && fbHandled
+            return liHandled || fbHandled
         }
 
         return fbHandled
