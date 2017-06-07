@@ -34,9 +34,7 @@ open class HCLinkedInManager: NSObject {
 
         } else {  // login via webView
 
-            let linkedInWebVC = LinkedInWebViewController(nibName: "LinkedInWebViewController",
-                                                          bundle: nil,
-                                                          key: key,
+            let linkedInWebVC = LinkedInWebViewController(key: key,
                                                           secret: secret,
                                                           redirectUrl: redirectUrl,
                                                           scope: scope,

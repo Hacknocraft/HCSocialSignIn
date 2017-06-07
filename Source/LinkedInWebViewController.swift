@@ -14,8 +14,8 @@ private let accessTokenEndPoint = "https://www.linkedin.com/oauth/v2/accessToken
 
 class LinkedInWebViewController: UIViewController, UIWebViewDelegate {
 
-    @IBOutlet weak var webView: UIWebView!
-    @IBOutlet weak var spinner: UIActivityIndicatorView!
+    var webView: UIWebView!
+    var spinner: UIActivityIndicatorView!
 
     let linkedInKey: String
     let linkedInSecret: String
@@ -25,9 +25,7 @@ class LinkedInWebViewController: UIViewController, UIWebViewDelegate {
 
     // MARK: - Initializers
 
-    init(nibName nibNameOrNil: String?,
-         bundle nibBundleOrNil: Bundle?,
-         key: String,
+     init(key: String,
          secret: String,
          redirectUrl: String,
          scope: [String],
@@ -37,7 +35,7 @@ class LinkedInWebViewController: UIViewController, UIWebViewDelegate {
         self.redirectUrl = redirectUrl
         self.scope = scope
         self.completionHandler = completionHandler
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        super.init(nibName: nil, bundle: nil)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -49,7 +47,14 @@ class LinkedInWebViewController: UIViewController, UIWebViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        webView = UIWebView(frame: view.bounds)
+        webView.delegate = self
+        view.addSubview(webView)
+        
+        spinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        spinner.center = view.center
         spinner.startAnimating()
+        view.addSubview(spinner)
 
         title = "Login with LinkedIn"
         let leftButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(dismissVC))

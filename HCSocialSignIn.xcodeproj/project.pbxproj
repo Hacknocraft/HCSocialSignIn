@@ -21,7 +21,6 @@
 		AF56E8E31ED6259900776B51 /* HCFacebookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF56E8E21ED6259900776B51 /* HCFacebookManager.swift */; };
 		D60B151F0B9180026962F6EE /* Pods_HCSocialSignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F8034187F2115BB5FC9A660 /* Pods_HCSocialSignIn.framework */; };
 		FD036DC31EE54DB8001EE965 /* LinkedInWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD036DC11EE54DB8001EE965 /* LinkedInWebViewController.swift */; };
-		FD036DC41EE54DB8001EE965 /* LinkedInWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD036DC21EE54DB8001EE965 /* LinkedInWebViewController.xib */; };
 		FD8C940F1EE12894004C2C3D /* HCLinkedInManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8C940E1EE12894004C2C3D /* HCLinkedInManager.swift */; };
 		FD8C94131EE12FC9004C2C3D /* linkedin-sdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD8C94121EE12FC9004C2C3D /* linkedin-sdk.framework */; };
 /* End PBXBuildFile section */
@@ -70,7 +69,6 @@
 		B406E58B9E30D596A95FD063 /* Pods-HCSocialSignInTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HCSocialSignInTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HCSocialSignInTests/Pods-HCSocialSignInTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D27C9F5524C8B6AB495B2A9C /* Pods-HCSocialSignIn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HCSocialSignIn.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HCSocialSignIn/Pods-HCSocialSignIn.debug.xcconfig"; sourceTree = "<group>"; };
 		FD036DC11EE54DB8001EE965 /* LinkedInWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkedInWebViewController.swift; sourceTree = "<group>"; };
-		FD036DC21EE54DB8001EE965 /* LinkedInWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LinkedInWebViewController.xib; sourceTree = "<group>"; };
 		FD8C940E1EE12894004C2C3D /* HCLinkedInManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCLinkedInManager.swift; sourceTree = "<group>"; };
 		FD8C94101EE12C96004C2C3D /* linkedin-sdk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "linkedin-sdk.framework"; path = "../../../li-ios-sdk-1.0.7-release 2/linkedin-sdk.framework"; sourceTree = "<group>"; };
 		FD8C94121EE12FC9004C2C3D /* linkedin-sdk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = "linkedin-sdk.framework"; sourceTree = "<group>"; };
@@ -202,7 +200,6 @@
 				FD8C94121EE12FC9004C2C3D /* linkedin-sdk.framework */,
 				FD8C940E1EE12894004C2C3D /* HCLinkedInManager.swift */,
 				FD036DC11EE54DB8001EE965 /* LinkedInWebViewController.swift */,
-				FD036DC21EE54DB8001EE965 /* LinkedInWebViewController.xib */,
 			);
 			name = LinkedIn;
 			sourceTree = "<group>";
@@ -328,7 +325,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF56E8931ED53AD300776B51 /* LaunchScreen.storyboard in Resources */,
-				FD036DC41EE54DB8001EE965 /* LinkedInWebViewController.xib in Resources */,
 				AF56E8901ED53AD300776B51 /* Assets.xcassets in Resources */,
 				AF56E88E1ED53AD300776B51 /* Main.storyboard in Resources */,
 			);
