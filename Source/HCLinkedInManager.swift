@@ -11,12 +11,17 @@ import Alamofire
 
 open class HCLinkedInManager: NSObject {
 
-    open static let sharedInstance = HCLinkedInManager()
+    let key: String
+    let secret: String
+    let redirectUrl: String
 
-    func login(viewController: UIViewController,
-               key: String,
-               secret: String, redirectUrl: String,
-               scope: [String],
+    init(key: String, secret: String, redirectUrl: String) {
+        self.key = key
+        self.secret = secret
+        self.redirectUrl = redirectUrl
+    }
+    
+    func login(viewController: UIViewController, scope: [String],
                completionHandler: ((_ success: Bool, _ error: Error?) -> Void)?) {
 
         if isLinkedinAppInstalled() { // login via LinkedIn app

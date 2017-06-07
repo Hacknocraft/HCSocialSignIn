@@ -20,6 +20,8 @@ class LandingViewController: UIViewController {
     var avatarURL: String?
     var username: String?
     var userEmail: String?
+    
+    var linkedInManager: HCLinkedInManager?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,15 +55,13 @@ class LandingViewController: UIViewController {
         let redirectUrl = "http://hacknocraft.com/"
         let scope = ["r_basicprofile", "r_emailaddress"]
 
-        HCLinkedInManager.sharedInstance.login(viewController: self,
-                                               key: linkedInKey,
-                                               secret: linkedInSecret,
-                                               redirectUrl: redirectUrl,
-                                               scope: scope) { (success, _) in
-
-                                                if success {
-                                                    self.handleLinkedInLoginSuccess()
-                                                }
+        linkedInManager = HCLinkedInManager(key: linkedInKey, secret: linkedInSecret, redirectUrl: redirectUrl)
+        
+        linkedInManager?.login(viewController: self, scope: scope) { (success, error) in
+            
+            if success {
+                self.handleLinkedInLoginSuccess()
+            }
         }
     }
 
@@ -99,9 +99,7 @@ class LandingViewController: UIViewController {
         HUD.show(.progress)
 
         let fields = ["id", "email-address", "first-name", "last-name", "public-profile-url"]
-        HCLinkedInManager
-            .sharedInstance
-            .fetchCurrentProfileInfo(parameters: fields) { (info, _) in
+        linkedInManager?.fetchCurrentProfileInfo(parameters: fields) { (info, _) in
 
                 HUD.hide()
 

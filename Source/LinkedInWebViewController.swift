@@ -17,21 +17,21 @@ class LinkedInWebViewController: UIViewController, UIWebViewDelegate {
     var webView: UIWebView!
     var spinner: UIActivityIndicatorView!
 
-    let linkedInKey: String
-    let linkedInSecret: String
+    let key: String
+    let secret: String
     let redirectUrl: String
     let scope: [String]
     let completionHandler: ((_ success: Bool, _ error: Error?) -> Void)?
 
     // MARK: - Initializers
-
-     init(key: String,
+    
+    init(key: String,
          secret: String,
          redirectUrl: String,
          scope: [String],
          completionHandler: ((_ success: Bool, _ error: Error?) -> Void)?) {
-        self.linkedInKey = key
-        self.linkedInSecret = secret
+        self.key = key
+        self.secret = secret
         self.redirectUrl = redirectUrl
         self.scope = scope
         self.completionHandler = completionHandler
@@ -77,7 +77,7 @@ class LinkedInWebViewController: UIViewController, UIWebViewDelegate {
     private func startAuthorization() {
         var authorizationURL = "\(authorizationEndPoint)?"
         authorizationURL += "response_type=code&"
-        authorizationURL += "client_id=\(linkedInKey)&"
+        authorizationURL += "client_id=\(key)&"
 
         if let url = redirectUrl.addingPercentEncoding(withAllowedCharacters: .alphanumerics) {
             authorizationURL += "redirect_uri=\(url)&"
@@ -110,8 +110,8 @@ class LinkedInWebViewController: UIViewController, UIWebViewDelegate {
             "grant_type": "authorization_code",
             "code": "\(authorizationCode)",
             "redirect_uri": redirectUrl,
-            "client_secret": "\(linkedInSecret)",
-            "client_id": "\(linkedInKey)"
+            "client_secret": "\(secret)",
+            "client_id": "\(key)"
         ]
 
         Alamofire.request(accessTokenUrl,
