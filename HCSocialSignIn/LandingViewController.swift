@@ -20,7 +20,7 @@ class LandingViewController: UIViewController {
     var avatarURL: String?
     var username: String?
     var userEmail: String?
-    
+
     var linkedInManager: HCLinkedInManager?
 
     override func viewDidLoad() {
@@ -53,15 +53,19 @@ class LandingViewController: UIViewController {
         let linkedInKey = "81zmve1omyn2cn"
         let linkedInSecret = "ErrcmDNQXkwJtQd4"
         let redirectUrl = "http://hacknocraft.com/"
-        let scope = ["r_basicprofile", "r_emailaddress"]
+        let scopes = ["r_basicprofile", "r_emailaddress"]
+        let permissions = [LISDK_BASIC_PROFILE_PERMISSION,
+                      LISDK_EMAILADDRESS_PERMISSION]
 
         linkedInManager = HCLinkedInManager(key: linkedInKey, secret: linkedInSecret, redirectUrl: redirectUrl)
-        
-        linkedInManager?.login(viewController: self, scope: scope) { (success, error) in
-            
-            if success {
-                self.handleLinkedInLoginSuccess()
-            }
+
+        linkedInManager?.login(viewController: self,
+                               scopes: scopes,
+                               permissions: permissions) { (success, _) in
+
+                                                if success {
+                                                    self.handleLinkedInLoginSuccess()
+                                                }
         }
     }
 
@@ -98,20 +102,32 @@ class LandingViewController: UIViewController {
     func handleLinkedInLoginSuccess() {
         HUD.show(.progress)
 
-        let fields = ["id", "email-address", "first-name", "last-name", "public-profile-url"]
-        linkedInManager?.fetchCurrentProfileInfo(parameters: fields) { (info, _) in
+        let fields = ["email-address", "first-name", "last-name", "picture-url"]
+        linkedInManager?.fetchCurrentProfileInfo(parameters: fields) { (info, error) in
 
-                HUD.hide()
+            HUD.hide()
 
-                let firstName = info?["firstName"] as? String
-                let lastName = info?["lastName"] as? String
-                self.username = "\(String(describing: firstName)) \(String(describing: lastName))"
+            if let json = info {
 
-                self.userEmail = info?["emailAdress"] as? String
-                self.userID = info?["id"] as? String
-                self.avatarURL = info?["publicProfileUrl"] as? String
+                var username = ""
+                if let firstName = json["firstName"] as? String {
+                    username = firstName
+                }
+                if let lastName = json["lastName"] as? String {
+                    username += " \(lastName)"
+                }
+                self.username = username
+
+                self.userEmail = json["emailAddress"] as? String
+                self.avatarURL = json["pictureUrl"] as? String
 
                 self.goToProfile()
+
+            } else if error != nil {
+
+                HUD.flash(.labeledError(title: "Request failed",
+                                        subtitle: "Cannot fetch user profile from LinkedIn"))
+            }
         }
     }
 

@@ -71,7 +71,7 @@
 		FD036DC11EE54DB8001EE965 /* LinkedInWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkedInWebViewController.swift; sourceTree = "<group>"; };
 		FD8C940E1EE12894004C2C3D /* HCLinkedInManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCLinkedInManager.swift; sourceTree = "<group>"; };
 		FD8C94101EE12C96004C2C3D /* linkedin-sdk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "linkedin-sdk.framework"; path = "../../../li-ios-sdk-1.0.7-release 2/linkedin-sdk.framework"; sourceTree = "<group>"; };
-		FD8C94121EE12FC9004C2C3D /* linkedin-sdk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = "linkedin-sdk.framework"; sourceTree = "<group>"; };
+		FD8C94121EE12FC9004C2C3D /* linkedin-sdk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "linkedin-sdk.framework"; path = "../Source/linkedin-sdk.framework"; sourceTree = "<group>"; };
 		FD8C94421EE1365B004C2C3D /* HCSocialSignIn-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HCSocialSignIn-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -153,6 +153,7 @@
 		AF56E8871ED53AD300776B51 /* HCSocialSignIn */ = {
 			isa = PBXGroup;
 			children = (
+				FD30B75F1EE7EABE00CAE68C /* Lib */,
 				AF56E8B61ED543BB00776B51 /* Source */,
 				AF56E8881ED53AD300776B51 /* AppDelegate.swift */,
 				AF56E88A1ED53AD300776B51 /* LandingViewController.swift */,
@@ -197,11 +198,18 @@
 		FD036DC01EE54D95001EE965 /* LinkedIn */ = {
 			isa = PBXGroup;
 			children = (
-				FD8C94121EE12FC9004C2C3D /* linkedin-sdk.framework */,
 				FD8C940E1EE12894004C2C3D /* HCLinkedInManager.swift */,
 				FD036DC11EE54DB8001EE965 /* LinkedInWebViewController.swift */,
 			);
 			name = LinkedIn;
+			sourceTree = "<group>";
+		};
+		FD30B75F1EE7EABE00CAE68C /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+				FD8C94121EE12FC9004C2C3D /* linkedin-sdk.framework */,
+			);
+			name = Lib;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -283,7 +291,7 @@
 					AF56E8841ED53AD300776B51 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 9S24R7N9D3;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					AF56E8981ED53AD300776B51 = {
 						CreatedOnToolsVersion = 8.3.2;
@@ -668,9 +676,12 @@
 					"$(PROJECT_DIR)/Source",
 				);
 				INFOPLIST_FILE = HCSocialSignIn/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hacknocraft.HCSocialSignIn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "bf72e62f-8f73-4f9e-9b9f-5c8b1f15dc30";
+				PROVISIONING_PROFILE_SPECIFIER = SocialSignInSDK_dev;
 				SWIFT_OBJC_BRIDGING_HEADER = "./HCSocialSignIn/HCSocialSignIn-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
@@ -681,15 +692,17 @@
 			baseConfigurationReference = 6F4319A3BD2DE83EF6EF115B /* Pods-HCSocialSignIn.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 9S24R7N9D3;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Source",
 				);
 				INFOPLIST_FILE = HCSocialSignIn/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hacknocraft.HCSocialSignIn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "./HCSocialSignIn/HCSocialSignIn-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};

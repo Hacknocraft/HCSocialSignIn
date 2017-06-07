@@ -20,20 +20,20 @@ class LinkedInWebViewController: UIViewController, UIWebViewDelegate {
     let key: String
     let secret: String
     let redirectUrl: String
-    let scope: [String]
+    let scopes: [String]
     let completionHandler: ((_ success: Bool, _ error: Error?) -> Void)?
 
     // MARK: - Initializers
-    
+
     init(key: String,
          secret: String,
          redirectUrl: String,
-         scope: [String],
+         scopes: [String],
          completionHandler: ((_ success: Bool, _ error: Error?) -> Void)?) {
         self.key = key
         self.secret = secret
         self.redirectUrl = redirectUrl
-        self.scope = scope
+        self.scopes = scopes
         self.completionHandler = completionHandler
         super.init(nibName: nil, bundle: nil)
     }
@@ -50,7 +50,7 @@ class LinkedInWebViewController: UIViewController, UIWebViewDelegate {
         webView = UIWebView(frame: view.bounds)
         webView.delegate = self
         view.addSubview(webView)
-        
+
         spinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         spinner.center = view.center
         spinner.startAnimating()
@@ -86,7 +86,7 @@ class LinkedInWebViewController: UIViewController, UIWebViewDelegate {
         let state = "linkedin\(Int(NSDate().timeIntervalSince1970))"
         authorizationURL += "state=\(state)&"
 
-        authorizationURL += "scope=\(scope.joined(separator: "%2C"))"
+        authorizationURL += "scope=\(scopes.joined(separator: "%2C"))"
 
         if let url = URL(string: authorizationURL) {
             let request = URLRequest(url: url)
@@ -96,13 +96,9 @@ class LinkedInWebViewController: UIViewController, UIWebViewDelegate {
         }
     }
 
-    func requestForAccessToken(_ authorizationCode: String) {
+    private func requestForAccessToken(_ authorizationCode: String) {
 
         guard let accessTokenUrl = URL(string: accessTokenEndPoint) else {
-            return
-        }
-
-        guard let redirectUrl = redirectUrl.addingPercentEncoding(withAllowedCharacters: .alphanumerics) else {
             return
         }
 
@@ -116,7 +112,8 @@ class LinkedInWebViewController: UIViewController, UIWebViewDelegate {
 
         Alamofire.request(accessTokenUrl,
                           method: .post,
-                          parameters: params)
+                          parameters: params,
+                          headers: ["Content-Type": "application/x-www-form-urlencoded"])
             .responseJSON(completionHandler: { (response) in
 
                 if let json = response.result.value as? [String: Any],
@@ -158,14 +155,8 @@ class LinkedInWebViewController: UIViewController, UIWebViewDelegate {
                 requestForAccessToken(code)
             }
             return false
-        }
-        // this logic is flawed, the initial URL contains the word "cancel"
-//        else if url.absoluteString.contains("cancel") { // user cancel authorization
-//            completionHandler?(false, LoginError.cancelError)
-//            self.dismissVC()
-//            return false
-            //        }
-        else if url.path.contains("login-cancel") { // user cancel authorization
+        } else if url.path.contains("authorization-cancel") ||
+            url.path.contains("login-cancel") { // user cancel authorization
             completionHandler?(false, LoginError.cancelError)
             self.dismissVC()
             return false
@@ -188,5 +179,5 @@ fileprivate struct LoginError {
                                   userInfo: ["localizedDescription": "incorrect url"]) as Error
     static let cancelError = NSError(domain: "",
                                      code: 0,
-                                     userInfo: ["localizedDescription": "user canceled authorization"]) as Error
+                                     userInfo: ["localizedDescription": "user canceled"]) as Error
 }
