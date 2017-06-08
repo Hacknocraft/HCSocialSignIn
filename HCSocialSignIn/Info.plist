@@ -39,6 +39,7 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
+				<string>li5002625</string>
 				<string>fb1778440065776321</string>
 			</array>
 		</dict>
@@ -49,6 +50,9 @@
 	<string>Hack­n­o­c­raft</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>linkedin</string>
+		<string>linkedin-sdk2</string>
+		<string>linkedin-sdk</string>
 		<string>fbapi</string>
 		<string>fb-messenger-api</string>
 		<string>fbauth2</string>
@@ -56,5 +60,22 @@
 	</array>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Facebook SDK required permission</string>
+	<key>LIAppId</key>
+	<string>5002625</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>linkedin.com</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+				<key>NSExceptionRequiresForwardSecrecy</key>
+				<false/>
+			</dict>
+		</dict>
+	</dict>
 </dict>
 </plist>

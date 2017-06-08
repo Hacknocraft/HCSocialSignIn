@@ -47,6 +47,28 @@ class LandingViewController: UIViewController {
     }
 
     @IBAction func linkedInLoginTapped(_ sender: Any) {
+
+        let linkedInKey = "81zmve1omyn2cn"
+        let linkedInSecret = "ErrcmDNQXkwJtQd4"
+        let redirectUrl = "http://hacknocraft.com/"
+        let scopes = ["r_basicprofile", "r_emailaddress"]
+        let permissions = [LISDK_BASIC_PROFILE_PERMISSION,
+                      LISDK_EMAILADDRESS_PERMISSION]
+
+        let linkedInManager = HCLinkedInManager.sharedInstance
+
+        linkedInManager.key = linkedInKey
+        linkedInManager.secret = linkedInSecret
+        linkedInManager.redirectUrl = redirectUrl
+
+        linkedInManager.login(viewController: self,
+                               scopes: scopes,
+                               permissions: permissions) { (success, _) in
+
+                                                if success {
+                                                    self.handleLinkedInLoginSuccess()
+                                                }
+        }
     }
 
     @IBAction func twitterLoginTapped(_ sender: Any) {
@@ -76,6 +98,38 @@ class LandingViewController: UIViewController {
                     HUD.flash(.labeledError(title: "Request failed",
                                             subtitle: "Cannot fetch user profile from Facebook"))
                 }
+        }
+    }
+
+    func handleLinkedInLoginSuccess() {
+        HUD.show(.progress)
+
+        let fields = ["email-address", "first-name", "last-name", "picture-url"]
+        HCLinkedInManager.sharedInstance.fetchCurrentProfileInfo(parameters: fields) { (info, error) in
+
+            HUD.hide()
+
+            if let json = info {
+
+                var username = ""
+                if let firstName = json["firstName"] as? String {
+                    username = firstName
+                }
+                if let lastName = json["lastName"] as? String {
+                    username += " \(lastName)"
+                }
+                self.username = username
+
+                self.userEmail = json["emailAddress"] as? String
+                self.avatarURL = json["pictureUrl"] as? String
+
+                self.goToProfile()
+
+            } else if error != nil {
+
+                HUD.flash(.labeledError(title: "Request failed",
+                                        subtitle: "Cannot fetch user profile from LinkedIn"))
+            }
         }
     }
 
