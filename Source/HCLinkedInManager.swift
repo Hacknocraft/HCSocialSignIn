@@ -14,15 +14,11 @@ private let defaultPermissions = [LISDK_BASIC_PROFILE_PERMISSION, LISDK_EMAILADD
 
 open class HCLinkedInManager: NSObject {
 
-    open let key: String
-    open let secret: String
-    open let redirectUrl: String
+    open static let sharedInstance = HCLinkedInManager()
 
-    public init(key: String, secret: String, redirectUrl: String) {
-        self.key = key
-        self.secret = secret
-        self.redirectUrl = redirectUrl
-    }
+    open var key: String?
+    open var secret: String?
+    open var redirectUrl: String?
 
     /// login via LinkedIn
     ///
@@ -35,6 +31,7 @@ open class HCLinkedInManager: NSObject {
                     scopes: [String] = defaultScopes,
                     permissions: [String] = defaultPermissions,
                     completion: ((_ success: Bool, _ error: Error?) -> Void)?) {
+        validateProperties()
 
         if isLinkedinAppInstalled() { // login via LinkedIn app
             LISDKSessionManager.createSession(withAuth: permissions,
@@ -49,10 +46,7 @@ open class HCLinkedInManager: NSObject {
 
         } else {  // login via webView
 
-            let linkedInWebVC = LinkedInWebViewController(key: key,
-                                                          secret: secret,
-                                                          redirectUrl: redirectUrl,
-                                                          scopes: scopes,
+            let linkedInWebVC = LinkedInWebViewController(scopes: scopes,
                                                           completionHandler: completion)
             let nav = UINavigationController(rootViewController: linkedInWebVC)
             viewController.present(nav, animated: true, completion: nil)
@@ -66,6 +60,8 @@ open class HCLinkedInManager: NSObject {
     ///   - completion: the completion block
     open func fetchCurrentProfileInfo(parameters: [String]? = nil,
                                       completion: ((_ profile: [String: Any]?, _ error: Error?) -> Void)?) {
+        validateProperties()
+
         var targetUrlString = ""
         if let params = parameters, params != [] {
             targetUrlString = "https://api.linkedin.com/v1/people/~:(\(params.joined(separator: ",")))?format=json"
@@ -114,6 +110,8 @@ open class HCLinkedInManager: NSObject {
         }
     }
 
+    // MARK: - Private methods
+
     private func isLinkedinAppInstalled() -> Bool {
         if let url = URL(string: "linkedin://") {
             return UIApplication.shared.canOpenURL(url)
@@ -127,6 +125,21 @@ open class HCLinkedInManager: NSObject {
             return json
         } else {
             return nil
+        }
+    }
+
+    private func validateProperties() {
+
+        if let key = key {
+            assert(!key.isEmpty, "key can't be empty")
+        }
+
+        if let secret = secret {
+            assert(!secret.isEmpty, "secret can't be empty")
+        }
+
+        if let redirectUrl = redirectUrl {
+            assert(!redirectUrl.isEmpty, "redirectUrl can't be empty")
         }
     }
 }

@@ -17,22 +17,13 @@ class LinkedInWebViewController: UIViewController, UIWebViewDelegate {
     var webView: UIWebView!
     var spinner: UIActivityIndicatorView!
 
-    let key: String
-    let secret: String
-    let redirectUrl: String
     let scopes: [String]
     let completionHandler: ((_ success: Bool, _ error: Error?) -> Void)?
 
     // MARK: - Initializers
 
-    init(key: String,
-         secret: String,
-         redirectUrl: String,
-         scopes: [String],
+    init(scopes: [String],
          completionHandler: ((_ success: Bool, _ error: Error?) -> Void)?) {
-        self.key = key
-        self.secret = secret
-        self.redirectUrl = redirectUrl
         self.scopes = scopes
         self.completionHandler = completionHandler
         super.init(nibName: nil, bundle: nil)
@@ -47,9 +38,21 @@ class LinkedInWebViewController: UIViewController, UIWebViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        webView = UIWebView(frame: view.bounds)
+        webView = UIWebView()
         webView.delegate = self
         view.addSubview(webView)
+
+        webView.translatesAutoresizingMaskIntoConstraints = false
+        let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[webView]-0-|",
+                                                                   options: .directionLeadingToTrailing,
+                                                                   metrics: nil,
+                                                                   views: ["webView": webView])
+        view.addConstraints(horizontalConstraints)
+        let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[webView]-0-|",
+                                                                 options: .directionLeadingToTrailing,
+                                                                 metrics: nil,
+                                                                 views: ["webView": webView])
+        view.addConstraints(verticalConstraints)
 
         spinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         spinner.center = view.center
@@ -75,6 +78,13 @@ class LinkedInWebViewController: UIViewController, UIWebViewDelegate {
     // MARK: - Request methods
 
     private func startAuthorization() {
+
+        let linkedInManager = HCLinkedInManager.sharedInstance
+        guard let key = linkedInManager.key,
+            let redirectUrl = linkedInManager.redirectUrl else {
+                return
+        }
+
         var authorizationURL = "\(authorizationEndPoint)?"
         authorizationURL += "response_type=code&"
         authorizationURL += "client_id=\(key)&"
@@ -102,6 +112,13 @@ class LinkedInWebViewController: UIViewController, UIWebViewDelegate {
             return
         }
 
+        let linkedInManager = HCLinkedInManager.sharedInstance
+        guard let key = linkedInManager.key,
+            let redirectUrl = linkedInManager.redirectUrl,
+            let secret = linkedInManager.secret else {
+                return
+        }
+
         let params = [
             "grant_type": "authorization_code",
             "code": "\(authorizationCode)",
@@ -118,8 +135,6 @@ class LinkedInWebViewController: UIViewController, UIWebViewDelegate {
 
                 if let json = response.result.value as? [String: Any],
                     let accessToken = json["access_token"] as? String {
-                    self.spinner.stopAnimating()
-                    self.spinner.isHidden = true
 
                     UserDefaults.standard.set(accessToken, forKey: "LIAccessToken")
                     UserDefaults.standard.synchronize()
@@ -140,23 +155,22 @@ class LinkedInWebViewController: UIViewController, UIWebViewDelegate {
     func webView(_ webView: UIWebView,
                  shouldStartLoadWith request: URLRequest,
                  navigationType: UIWebViewNavigationType) -> Bool {
-        guard let url = request.url else {
-            return false
+
+        guard let url = request.url,
+            let redirectUrl = HCLinkedInManager.sharedInstance.redirectUrl else {
+                return false
         }
 
         if url.absoluteString.hasPrefix(redirectUrl),
-            url.absoluteString.range(of: "code") != nil {
+            url.absoluteString.range(of: "code") != nil,
+            let code = getQueryStringParameter(url: url.absoluteString, param: "code") {
 
-            let urlParts = url.absoluteString.components(separatedBy: "&")
-            if let code = urlParts.first?.components(separatedBy: "=")[1] {
-                spinner.startAnimating()
-                spinner.isHidden = false
-
-                requestForAccessToken(code)
-            }
+            requestForAccessToken(code)
             return false
+
         } else if url.path.contains("authorization-cancel") ||
             url.path.contains("login-cancel") { // user cancel authorization
+
             completionHandler?(false, LoginError.cancelError)
             self.dismissVC()
             return false
@@ -167,8 +181,16 @@ class LinkedInWebViewController: UIViewController, UIWebViewDelegate {
 
     func webViewDidFinishLoad(_ webView: UIWebView) {
         spinner.stopAnimating()
-        spinner.isHidden = true
+        spinner.removeFromSuperview()
     }
+
+    // MARK: - Private methods
+
+    func getQueryStringParameter(url: String, param: String) -> String? {
+        guard let components = URLComponents(string: url) else { return nil }
+        return components.queryItems?.first(where: { $0.name == param })?.value
+    }
+
 }
 
 // MARK: - LoginError

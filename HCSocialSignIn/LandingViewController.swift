@@ -21,8 +21,6 @@ class LandingViewController: UIViewController {
     var username: String?
     var userEmail: String?
 
-    var linkedInManager: HCLinkedInManager?
-
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -57,9 +55,13 @@ class LandingViewController: UIViewController {
         let permissions = [LISDK_BASIC_PROFILE_PERMISSION,
                       LISDK_EMAILADDRESS_PERMISSION]
 
-        linkedInManager = HCLinkedInManager(key: linkedInKey, secret: linkedInSecret, redirectUrl: redirectUrl)
+        let linkedInManager = HCLinkedInManager.sharedInstance
 
-        linkedInManager?.login(viewController: self,
+        linkedInManager.key = linkedInKey
+        linkedInManager.secret = linkedInSecret
+        linkedInManager.redirectUrl = redirectUrl
+
+        linkedInManager.login(viewController: self,
                                scopes: scopes,
                                permissions: permissions) { (success, _) in
 
@@ -103,7 +105,7 @@ class LandingViewController: UIViewController {
         HUD.show(.progress)
 
         let fields = ["email-address", "first-name", "last-name", "picture-url"]
-        linkedInManager?.fetchCurrentProfileInfo(parameters: fields) { (info, error) in
+        HCLinkedInManager.sharedInstance.fetchCurrentProfileInfo(parameters: fields) { (info, error) in
 
             HUD.hide()
 
