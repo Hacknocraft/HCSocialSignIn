@@ -59,7 +59,6 @@ class LandingViewController: UIViewController {
         linkedInManager.redirectUrl = redirectUrl
 
         linkedInManager.login(viewController: self) { (success, _) in
-
             if success {
                 self.handleLinkedInLoginSuccess()
             }

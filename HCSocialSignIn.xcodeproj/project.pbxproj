@@ -20,6 +20,7 @@
 		AF56E8BA1ED601D000776B51 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF56E8B91ED601D000776B51 /* ProfileViewController.swift */; };
 		AF56E8E31ED6259900776B51 /* HCFacebookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF56E8E21ED6259900776B51 /* HCFacebookManager.swift */; };
 		AFBDEC5E1EF5B3B500DD0314 /* HCLinkedInManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8C940E1EE12894004C2C3D /* HCLinkedInManager.swift */; };
+		AFBDEC5F1EF5BA5300DD0314 /* LinkedInWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD036DC11EE54DB8001EE965 /* LinkedInWebViewController.swift */; };
 		D60B151F0B9180026962F6EE /* Pods_HCSocialSignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F8034187F2115BB5FC9A660 /* Pods_HCSocialSignIn.framework */; };
 		FD036DC31EE54DB8001EE965 /* LinkedInWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD036DC11EE54DB8001EE965 /* LinkedInWebViewController.swift */; };
 		FD8C940F1EE12894004C2C3D /* HCLinkedInManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8C940E1EE12894004C2C3D /* HCLinkedInManager.swift */; };
@@ -516,6 +517,7 @@
 			files = (
 				AFBDEC5E1EF5B3B500DD0314 /* HCLinkedInManager.swift in Sources */,
 				AF56E89E1ED53AD300776B51 /* HCSocialSignInTests.swift in Sources */,
+				AFBDEC5F1EF5BA5300DD0314 /* LinkedInWebViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
