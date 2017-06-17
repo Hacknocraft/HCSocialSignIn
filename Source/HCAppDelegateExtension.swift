@@ -17,15 +17,6 @@ extension AppDelegate {
                                                                               open: url,
                                                                               sourceApplication: sourceApplication,
                                                                               annotation: annotation)
-
-        if LISDKCallbackHandler.shouldHandle(url) {
-            let liHandled = LISDKCallbackHandler.application(application,
-                                                             open: url,
-                                                             sourceApplication: sourceApplication,
-                                                             annotation: annotation)
-            return liHandled || fbHandled
-        }
-
         return fbHandled
     }
 

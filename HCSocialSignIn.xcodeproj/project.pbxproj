@@ -23,7 +23,6 @@
 		D60B151F0B9180026962F6EE /* Pods_HCSocialSignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F8034187F2115BB5FC9A660 /* Pods_HCSocialSignIn.framework */; };
 		FD036DC31EE54DB8001EE965 /* LinkedInWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD036DC11EE54DB8001EE965 /* LinkedInWebViewController.swift */; };
 		FD8C940F1EE12894004C2C3D /* HCLinkedInManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8C940E1EE12894004C2C3D /* HCLinkedInManager.swift */; };
-		FD8C94131EE12FC9004C2C3D /* linkedin-sdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD8C94121EE12FC9004C2C3D /* linkedin-sdk.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,7 +71,6 @@
 		FD036DC11EE54DB8001EE965 /* LinkedInWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkedInWebViewController.swift; sourceTree = "<group>"; };
 		FD8C940E1EE12894004C2C3D /* HCLinkedInManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCLinkedInManager.swift; sourceTree = "<group>"; };
 		FD8C94101EE12C96004C2C3D /* linkedin-sdk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "linkedin-sdk.framework"; path = "../../../li-ios-sdk-1.0.7-release 2/linkedin-sdk.framework"; sourceTree = "<group>"; };
-		FD8C94121EE12FC9004C2C3D /* linkedin-sdk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "linkedin-sdk.framework"; path = "../Source/linkedin-sdk.framework"; sourceTree = "<group>"; };
 		FD8C94421EE1365B004C2C3D /* HCSocialSignIn-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HCSocialSignIn-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -82,7 +80,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D60B151F0B9180026962F6EE /* Pods_HCSocialSignIn.framework in Frameworks */,
-				FD8C94131EE12FC9004C2C3D /* linkedin-sdk.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,7 +151,6 @@
 		AF56E8871ED53AD300776B51 /* HCSocialSignIn */ = {
 			isa = PBXGroup;
 			children = (
-				FD30B75F1EE7EABE00CAE68C /* Lib */,
 				AF56E8B61ED543BB00776B51 /* Source */,
 				AF56E8881ED53AD300776B51 /* AppDelegate.swift */,
 				AF56E88A1ED53AD300776B51 /* LandingViewController.swift */,
@@ -203,14 +199,6 @@
 				FD036DC11EE54DB8001EE965 /* LinkedInWebViewController.swift */,
 			);
 			name = LinkedIn;
-			sourceTree = "<group>";
-		};
-		FD30B75F1EE7EABE00CAE68C /* Lib */ = {
-			isa = PBXGroup;
-			children = (
-				FD8C94121EE12FC9004C2C3D /* linkedin-sdk.framework */,
-			);
-			name = Lib;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

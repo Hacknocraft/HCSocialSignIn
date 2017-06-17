@@ -10,6 +10,5 @@
 #define HCSocialSignIn_Bridging_Header_h
 
 #import <Foundation/Foundation.h>
-#import <linkedin-sdk/LISDK.h>
 
 #endif /* HCSocialSignIn_Bridging_Header_h */

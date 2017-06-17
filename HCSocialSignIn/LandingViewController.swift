@@ -51,9 +51,6 @@ class LandingViewController: UIViewController {
         let linkedInKey = "81zmve1omyn2cn"
         let linkedInSecret = "ErrcmDNQXkwJtQd4"
         let redirectUrl = "http://hacknocraft.com/"
-        let scopes = ["r_basicprofile", "r_emailaddress"]
-        let permissions = [LISDK_BASIC_PROFILE_PERMISSION,
-                      LISDK_EMAILADDRESS_PERMISSION]
 
         let linkedInManager = HCLinkedInManager.sharedInstance
 
@@ -61,13 +58,11 @@ class LandingViewController: UIViewController {
         linkedInManager.secret = linkedInSecret
         linkedInManager.redirectUrl = redirectUrl
 
-        linkedInManager.login(viewController: self,
-                               scopes: scopes,
-                               permissions: permissions) { (success, _) in
+        linkedInManager.login(viewController: self) { (success, _) in
 
-                                                if success {
-                                                    self.handleLinkedInLoginSuccess()
-                                                }
+            if success {
+                self.handleLinkedInLoginSuccess()
+            }
         }
     }
 

@@ -17,8 +17,8 @@ open class HCLinkedInManager: NSObject {
     open var secret: String?
     open var redirectUrl: String?
 
-    private static let defaultScopes = ["r_basicprofile", "r_emailaddress"]
-    private static let defaultPermissions = ["r_basicprofile", "r_emailaddress"]
+    static let defaultScopes = ["r_basicprofile", "r_emailaddress"]
+    static let defaultPermissions = ["r_basicprofile", "r_emailaddress"]
 
     /// login via LinkedIn
     ///
@@ -32,25 +32,10 @@ open class HCLinkedInManager: NSObject {
                     permissions: [String] = defaultPermissions,
                     completion: ((_ success: Bool, _ error: Error?) -> Void)?) {
         validateProperties()
-
-        if isLinkedInFrameworkLinked() && isLinkedInAppInstalled() { // login via LinkedIn app
-            LISDKSessionManager.createSession(withAuth: permissions,
-                                              state: nil,
-                                              showGoToAppStoreDialog: false,
-                                              successBlock: { (_) in
-                                                completion?(true, nil)
-
-            }) { (error) in
-                completion?(false, error)
-            }
-
-        } else {  // login via webView
-
-            let linkedInWebVC = LinkedInWebViewController(scopes: scopes,
-                                                          completionHandler: completion)
-            let nav = UINavigationController(rootViewController: linkedInWebVC)
-            viewController.present(nav, animated: true, completion: nil)
-        }
+        let linkedInWebVC = LinkedInWebViewController(scopes: scopes,
+                                                      completionHandler: completion)
+        let nav = UINavigationController(rootViewController: linkedInWebVC)
+        viewController.present(nav, animated: true, completion: nil)
     }
 
     /// Fetch the current user's profile
@@ -69,45 +54,23 @@ open class HCLinkedInManager: NSObject {
             targetUrlString = "https://api.linkedin.com/v1/people/~?format=json"
         }
 
-        if isLinkedInFrameworkLinked() && LISDKSessionManager.hasValidSession() {
+        guard let token = UserDefaults.standard.object(forKey: "LIAccessToken") as? String else {
+            return
+        }
 
-            LISDKAPIHelper.sharedInstance().getRequest(targetUrlString, success: { (response) in
+        guard let url = URL(string: targetUrlString) else {
+            return
+        }
 
-                if let res = response, res.statusCode == 200 {
+        Alamofire.request(url, headers: ["Authorization": "Bearer \(token)"])
+            .responseJSON(completionHandler: { (response) in
 
-                    let json = self.convertStringToJson(res.data)
-                    DispatchQueue.main.async {
-                        completion?(json, nil)
-                    }
-                }
-
-            }, error: { (error) in
-
-                DispatchQueue.main.async {
-                    completion?(nil, error)
+                if let json = response.result.value as? [String: Any] {
+                    completion?(json, nil)
+                } else {
+                    completion?(nil, response.error)
                 }
             })
-
-        } else {
-
-            guard let token = UserDefaults.standard.object(forKey: "LIAccessToken") as? String else {
-                return
-            }
-
-            guard let url = URL(string: targetUrlString) else {
-                return
-            }
-
-            Alamofire.request(url, headers: ["Authorization": "Bearer \(token)"])
-                .responseJSON(completionHandler: { (response) in
-
-                    if let json = response.result.value as? [String: Any] {
-                        completion?(json, nil)
-                    } else {
-                        completion?(nil, response.error)
-                    }
-                })
-        }
     }
 
     // MARK: - Private methods
