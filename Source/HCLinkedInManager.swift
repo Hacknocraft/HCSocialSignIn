@@ -9,9 +9,6 @@
 import UIKit
 import Alamofire
 
-private let defaultScopes = ["r_basicprofile", "r_emailaddress"]
-private let defaultPermissions = [LISDK_BASIC_PROFILE_PERMISSION, LISDK_EMAILADDRESS_PERMISSION]
-
 open class HCLinkedInManager: NSObject {
 
     open static let sharedInstance = HCLinkedInManager()
@@ -19,6 +16,9 @@ open class HCLinkedInManager: NSObject {
     open var key: String?
     open var secret: String?
     open var redirectUrl: String?
+
+    private static let defaultScopes = ["r_basicprofile", "r_emailaddress"]
+    private static let defaultPermissions = ["r_basicprofile", "r_emailaddress"]
 
     /// login via LinkedIn
     ///
@@ -33,7 +33,7 @@ open class HCLinkedInManager: NSObject {
                     completion: ((_ success: Bool, _ error: Error?) -> Void)?) {
         validateProperties()
 
-        if isLinkedinAppInstalled() { // login via LinkedIn app
+        if isLinkedInFrameworkLinked() && isLinkedInAppInstalled() { // login via LinkedIn app
             LISDKSessionManager.createSession(withAuth: permissions,
                                               state: nil,
                                               showGoToAppStoreDialog: false,
@@ -69,7 +69,7 @@ open class HCLinkedInManager: NSObject {
             targetUrlString = "https://api.linkedin.com/v1/people/~?format=json"
         }
 
-        if LISDKSessionManager.hasValidSession() {
+        if isLinkedInFrameworkLinked() && LISDKSessionManager.hasValidSession() {
 
             LISDKAPIHelper.sharedInstance().getRequest(targetUrlString, success: { (response) in
 
@@ -112,11 +112,20 @@ open class HCLinkedInManager: NSObject {
 
     // MARK: - Private methods
 
-    private func isLinkedinAppInstalled() -> Bool {
+    private func isLinkedInAppInstalled() -> Bool {
         if let url = URL(string: "linkedin://") {
             return UIApplication.shared.canOpenURL(url)
         }
         return false
+    }
+
+    private func isLinkedInFrameworkLinked() -> Bool {
+        if let appName = Bundle.main.infoDictionary?[kCFBundleNameKey as String] as? String {
+            let className = "\(appName).LISDKSessionManager"
+            return NSClassFromString(className) != nil
+        } else {
+            return false
+        }
     }
 
     private func convertStringToJson(_ string: String) -> [String: Any]? {

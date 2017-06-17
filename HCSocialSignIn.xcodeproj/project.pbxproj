@@ -19,10 +19,11 @@
 		AF56E8B81ED55D4900776B51 /* HCAppDelegateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF56E8B71ED55D4900776B51 /* HCAppDelegateExtension.swift */; };
 		AF56E8BA1ED601D000776B51 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF56E8B91ED601D000776B51 /* ProfileViewController.swift */; };
 		AF56E8E31ED6259900776B51 /* HCFacebookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF56E8E21ED6259900776B51 /* HCFacebookManager.swift */; };
+		AFBDEC5E1EF5B3B500DD0314 /* HCLinkedInManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8C940E1EE12894004C2C3D /* HCLinkedInManager.swift */; };
 		D60B151F0B9180026962F6EE /* Pods_HCSocialSignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F8034187F2115BB5FC9A660 /* Pods_HCSocialSignIn.framework */; };
 		FD036DC31EE54DB8001EE965 /* LinkedInWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD036DC11EE54DB8001EE965 /* LinkedInWebViewController.swift */; };
 		FD8C940F1EE12894004C2C3D /* HCLinkedInManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8C940E1EE12894004C2C3D /* HCLinkedInManager.swift */; };
-		FD8C94131EE12FC9004C2C3D /* linkedin-sdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD8C94121EE12FC9004C2C3D /* linkedin-sdk.framework */; };
+		FD8C94131EE12FC9004C2C3D /* linkedin-sdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD8C94121EE12FC9004C2C3D /* linkedin-sdk.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -525,6 +526,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AFBDEC5E1EF5B3B500DD0314 /* HCLinkedInManager.swift in Sources */,
 				AF56E89E1ED53AD300776B51 /* HCSocialSignInTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
