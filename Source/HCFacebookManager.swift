@@ -9,12 +9,12 @@
 import Foundation
 import FBSDKLoginKit
 
+public let defaultProfileParams = ["fields": "id, name, first_name, last_name, email, picture.type(large)"]
+
 /// This class handles all interaction with Facebook SDK
 open class HCFacebookManager: NSObject {
 
     open static let sharedInstance = HCFacebookManager()
-
-    static let defaultProfileParams = ["fields": "id, name, first_name, last_name, email, picture.type(large)"]
 
     /// login via Facebook
     ///
@@ -39,7 +39,7 @@ open class HCFacebookManager: NSObject {
     /// - Parameters:
     ///   - parameters: parameters in the profile that you wish to fetch
     ///   - complete: the completion block
-    open func fetchCurrentProfileInfo(parameters: [String: String] = HCFacebookManager.defaultProfileParams,
+    open func fetchCurrentProfileInfo(parameters: [String: String] = defaultProfileParams,
                                       complete: ((_ profile: [String: AnyObject]?, _ error: Error?) -> Void)?) {
 
         let request = FBSDKGraphRequest(graphPath: "me",

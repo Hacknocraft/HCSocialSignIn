@@ -195,7 +195,7 @@ class LinkedInWebViewController: UIViewController, UIWebViewDelegate {
 
 // MARK: - LoginError
 
-fileprivate struct LoginError {
+private struct LoginError {
     static let urlError = NSError(domain: "",
                                   code: 0,
                                   userInfo: ["localizedDescription": "incorrect url"]) as Error

@@ -11,7 +11,7 @@ target 'HCSocialSignIn' do
   pod 'FBSDKLoginKit'
 
   # HUD
-  pod 'PKHUD', '~> 4.0'
+  pod 'PKHUD', '~> 5.0'
 
   # Network
   pod 'Alamofire'

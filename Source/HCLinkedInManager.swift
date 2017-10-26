@@ -9,6 +9,9 @@
 import UIKit
 import Alamofire
 
+public let defaultScopes = ["r_basicprofile", "r_emailaddress"]
+public let defaultPermissions = ["r_basicprofile", "r_emailaddress"]
+
 open class HCLinkedInManager: NSObject {
 
     open static let sharedInstance = HCLinkedInManager()
@@ -16,9 +19,6 @@ open class HCLinkedInManager: NSObject {
     open var key: String?
     open var secret: String?
     open var redirectUrl: String?
-
-    static let defaultScopes = ["r_basicprofile", "r_emailaddress"]
-    static let defaultPermissions = ["r_basicprofile", "r_emailaddress"]
 
     /// login via LinkedIn
     ///
